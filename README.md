@@ -1,6 +1,14 @@
 #Netflix GPT
 -Create react app
 -Config tailwindcss
+-Header
+-Routing of App
+-Login form
+-Sign Up form
+-Form Validation
+-useRef Hook
+-Firebase setup
+-Deploying the Firebase
 
 
 
