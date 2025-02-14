@@ -1,16 +1,37 @@
-import React from 'react'
+import React from "react";
+import { auth } from "../utilis/firebase";
+import {signOut} from "firebase/auth"
+import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-    return (
-      <div className="absolute z-10 px-1 py-2 bg-gradient-to-b from-white">
-        <img 
-          className="w-40" 
-          src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
-          alt="Netflix Logo"
-        />
-      </div>
-    );
-  };
-  
-  export default Header;
-  
+  const user=useSelector(store=>store.user)
+  const navigate=useNavigate()
+  const handleSignOut=()=>{
+    signOut(auth).then(() => {
+      navigate("/")
+    }).catch((error) => {
+      navigate("/error")
+    });
+  }
+  return (
+    <div className="absolute z-10 px-6 py-4 bg-gradient-to-b from-white w-full flex justify-between items-center">
+      {/* Left Side - Netflix Logo */}
+      <img
+        className="w-40"
+        src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+        alt="Netflix Logo"
+      />
+
+      {user && (<div>
+        <button onClick={handleSignOut}
+        className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+          Sign Out
+        </button>
+        <p>{user.displayName}</p>
+      </div>)}
+    </div>
+  );
+};
+
+export default Header;

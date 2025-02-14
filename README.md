@@ -8,7 +8,15 @@
 -Form Validation
 -useRef Hook
 -Firebase setup
--Deploying the Firebase
+-Deploying the app
+-Created SignUp User Account
+-Implement Sign In User Api
+-Created Redux Store with userSlice
+-Implemented Sign out
+-Update Profile
+
+
+
 
 
 
