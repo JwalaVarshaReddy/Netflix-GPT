@@ -8,17 +8,7 @@ import { RouterProvider } from "react-router";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utilis/userSlice";
 const Body = () => {
-    const dispatch=useDispatch()
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-            const { uid, email, displayName } = user;
-            dispatch(addUser({ uid, email, displayName }));
-          } else {
-            dispatch(removeUser());
-          }
-        });
-      }, []);
+ 
     
       return (
         <Router>

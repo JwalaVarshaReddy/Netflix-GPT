@@ -33,7 +33,7 @@ const Login = () => {
             const { uid, email, displayName } = auth.currentUser;
                         dispatch(
                           addUser({ uid, email, displayName }));
-            navigate("/browse");
+            
           })
           .catch((error) => {
             setErrorMessage(error.message)
