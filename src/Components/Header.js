@@ -7,13 +7,13 @@ import { useDispatch } from "react-redux";
 import { useEffect} from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser,removeUser } from "../utilis/userSlice";
-
+import { netflix_URL } from "../utilis/constants";
 const Header = () => {
   const user=useSelector(store=>store.user)
   const navigate=useNavigate()
   const dispatch=useDispatch()
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        const unSubscribe=onAuthStateChanged(auth, (user) => {
           if (user) {
             const { uid, email, displayName } = user;
             dispatch(addUser({ uid, email, displayName }));
@@ -23,6 +23,7 @@ const Header = () => {
             navigate("/")
           }
         });
+        return ()=>unSubscribe()
       }, []);
   const handleSignOut=()=>{
     signOut(auth).then(() => {
@@ -36,7 +37,7 @@ const Header = () => {
       {/* Left Side - Netflix Logo */}
       <img
         className="w-40"
-        src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+        src={netflix_URL}
         alt="Netflix Logo"
       />
 
