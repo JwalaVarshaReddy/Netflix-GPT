@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utilis/userSlice";
 const Login = () => {
-  const dispatch=useDispatch
+  const dispatch=useDispatch()
   const navigate=useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
